@@ -1,4 +1,11 @@
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
+
+/**
+ * Menu which will run when the property owner is using the system
+ */
 
 public class PropertyOwnerMenu {
 
@@ -8,21 +15,22 @@ public class PropertyOwnerMenu {
         keyboard = new Scanner(System.in);
     }
 
-    public void run(){
+    public void run() throws IOException {
         boolean more = true;
         System.out.println("Owner's name: ");
         String ownerName = keyboard.nextLine();
         Owner owner = new Owner(ownerName);
+        FileMethods fileMethods = new FileMethods();
 
         while (more){
             for ( Property p : owner.getProperties()){  //checks is it tax day.
                 p.tax.taxDay();
             }
 
-            System.out.println("A)dd Properties, S)how Properties, P)ay Tax, V)iew Balancing Statements, L)ook at Payment History, Q)uick add (for developer use)");
+            System.out.println("1) Register a Properties, 2) Show Properties, 3) Pay Tax, 4) View Balancing Statements, 5) Look at Payment History, 6) Quick add (for developer use), Q)uit");
             String command = keyboard.nextLine().toUpperCase();
 
-            if(command.equals("A")){
+            if(command.equals("1")){ //Adding a Property
                 System.out.println("Address: ");
                 String address = keyboard.nextLine();
                 System.out.println("PostCode: ");
@@ -37,16 +45,15 @@ public class PropertyOwnerMenu {
                     ppr = true;
                 }
                 owner.addProperty( new Property(owner.getName(), address, postCode, marketValue, locationCategory, ppr));
-
             }
 
-            else if (command.equals("S")){
+            else if (command.equals("2")){
                 for(Property p: owner.getProperties()){
                     System.out.println(p.toString());
                 }
             }
 
-            else if(command.equals("P")){
+            else if(command.equals("3")){
                 System.out.print("Choose property from Postcode: " + "\n");
                 for(Property p: owner.getProperties()) {
                     System.out.println(p.getPostCode());
@@ -59,7 +66,7 @@ public class PropertyOwnerMenu {
                 }
             }
 
-            else if(command.equals("V")){
+            else if(command.equals("4")){
                 System.out.println("Which property's balancing statements would you like to view?");
                 for(Property p: owner.getProperties()) {
                     System.out.println(p.getPostCode());
@@ -80,7 +87,7 @@ public class PropertyOwnerMenu {
 
             }
 
-            else if(command.equals("L")){
+            else if(command.equals("5")){
                 System.out.println("All Payments");
                 System.out.println("-------------");
                 for (Property p: owner.getProperties() ){
@@ -92,16 +99,17 @@ public class PropertyOwnerMenu {
                 }
             }
 
-            else if(command.equals("Q")){
+            else if(command.equals("6")){
                 owner.addProperty( new Property(owner.getName(), "Lisardboula", "v92 y20", 270000, 4, true));
                 owner.addProperty( new Property(owner.getName(), "Limmers", "v95 Qk20", 400000, 0, false));
                 owner.addProperty( new Property(owner.getName(), "Espana", "Spf50", 1000000, 3, false));
             }
 
-
-
+            else if(command.equalsIgnoreCase("Q")) {
+                fileMethods.writeAnOwnersPropertiesToFile(owner);
+                more = false;
+            }
         }
     }
-
 
 }
