@@ -6,16 +6,18 @@ public class Payment {
 
     private LocalDate date;
     private double amount;
-    private boolean wasOverDue;
 
-    public Payment(LocalDate date, double amount, boolean wasOverDue){
-        this.date = date;
+    public Payment(double amount){
+        this.date = LocalDate.now();
         this.amount = amount;
-        this.wasOverDue = wasOverDue;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 
     @Override
     public String toString() {
-        return "Amount paid: " + amount + ", Date paid: " + java.time.LocalDate.now() + ", Was this overdue? " + wasOverDue;
+        return "Amount paid: " + amount + ", Date paid: " + java.time.LocalDate.now();
     }
 }
