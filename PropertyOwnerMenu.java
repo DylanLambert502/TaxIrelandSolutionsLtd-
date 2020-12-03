@@ -15,7 +15,11 @@ public class PropertyOwnerMenu {
         Owner owner = new Owner(ownerName);
 
         while (more){
-            System.out.println("A)dd Properties, S)how Properties P)ay Tax");
+            for ( Property p : owner.getProperties()){  //checks is it tax day.
+                p.tax.taxDay();
+            }
+
+            System.out.println("A)dd Properties, S)how Properties, P)ay Tax, V)iew Balancing Statements, L)ook at Payment History, Q)uick add (for developer use)");
             String command = keyboard.nextLine().toUpperCase();
 
             if(command.equals("A")){
@@ -32,11 +36,7 @@ public class PropertyOwnerMenu {
                 if (keyboard.nextInt() == 1){
                     ppr = true;
                 }
-                System.out.println("Years of overdue tax? ");
-                int yearsOfOverDueTax = keyboard.nextInt();
-                Tax tax = new Tax(yearsOfOverDueTax);
-                tax.addTheProperty( new Property(owner.getName(), address, postCode, marketValue, locationCategory, ppr ) );
-                owner.addProperty( new Property(owner.getName(), address, postCode, marketValue, locationCategory, ppr, tax ));
+                owner.addProperty( new Property(owner.getName(), address, postCode, marketValue, locationCategory, ppr));
 
             }
 
@@ -54,11 +54,51 @@ public class PropertyOwnerMenu {
                 String choice = keyboard.nextLine();
                 for (Property p: owner.getProperties()){
                     if(choice.equalsIgnoreCase( p.getPostCode() ) ){
-                        p.payTaxDue();
+                        p.tax.payTaxDue();
+                    }
+                }
+            }
+
+            else if(command.equals("V")){
+                System.out.println("Which property's balancing statements would you like to view?");
+                for(Property p: owner.getProperties()) {
+                    System.out.println(p.getPostCode());
+                }
+                String pChoice = keyboard.nextLine();
+                System.out.println("For what year would you like to view the balancing statement?");
+                int yChoice = keyboard.nextInt();
+
+                for(Property p: owner.getProperties()){
+                    if( pChoice.equalsIgnoreCase( p.getPostCode())){
+                        for (BalancingStatement s : p.tax.getStatements()){
+                            if (yChoice == s.getYear()){
+                                System.out.print( s.toString() );
+                            }
+                        }
                     }
                 }
 
             }
+
+            else if(command.equals("L")){
+                System.out.println("All Payments");
+                System.out.println("-------------");
+                for (Property p: owner.getProperties() ){
+                    for(BalancingStatement b: p.tax.getStatements()){
+                        for( Payment p1: b.getPayments()){
+                            System.out.println(p.getPostCode() + ": " + p1.toString());
+                        }
+                    }
+                }
+            }
+
+            else if(command.equals("Q")){
+                owner.addProperty( new Property(owner.getName(), "Lisardboula", "v92 y20", 270000, 4, true));
+                owner.addProperty( new Property(owner.getName(), "Limmers", "v95 Qk20", 400000, 0, false));
+                owner.addProperty( new Property(owner.getName(), "Espana", "Spf50", 1000000, 3, false));
+            }
+
+
 
         }
     }
