@@ -8,22 +8,7 @@ public class Property {
     private double marketValue;
     private int location;
     private boolean ppr;
-    private Tax tax;
-
-    private ArrayList<BalancingStatement> statements;//trying to work this in now
-
-    public Property(String ownerName, String address, String postCode,
-                    double marketValue, int location, boolean ppr, Tax tax) {
-        this.ownerName = ownerName;
-        this.address = address;
-        this.postCode = postCode;
-        this.marketValue = marketValue;
-        this.location = location;
-        this.ppr = ppr;
-        this.tax = tax;
-        
-        this.statements = new ArrayList<BalancingStatement>(); //trying to work this in now
-    }
+    protected Tax tax;
 
     public Property(String ownerName, String address, String postCode,
                     double marketValue, int location, boolean ppr) {
@@ -33,6 +18,7 @@ public class Property {
         this.marketValue = marketValue;
         this.location = location;
         this.ppr = ppr;
+        this.tax = new Tax( marketValue, location, ppr);
     }
 
     public String getOwner() {
@@ -55,29 +41,6 @@ public class Property {
         return ppr;
     }
 
-    public void payTaxDue(){
-        if(tax.taxDue == 0){
-            System.out.println("You're tax is all paid up on this property");
-        }else if (tax.taxOverDue != 0){
-            System.out.println("Press 0 if you would like to just pay your overdue tax and 1 if you wish to pay all due tax.");
-            Scanner keyboard = new Scanner( System.in);
-            int choice = keyboard.nextInt();
-            switch(choice){
-                case 0: System.out.println("You have paid $" + tax.taxOverDue + " worth of overdue tax on this property");
-                        tax.yearsOverDue = 0;
-                        tax.taxOverDue = 0;
-                        break;
-                case 1: System.out.println("You have paid $" + tax.taxOverDue + " worth of overdue tax on this property");
-                        System.out.println("You have also paid $" + tax.taxDue + " worth of tax due on this property");
-                        tax.yearsOverDue = 0;
-                        tax.taxOverDue = 0;
-                        tax.taxDue = 0;
-            }
-        } else {
-            System.out.println("You have paid $" + tax.taxDue + " worth of tax on this property");
-            tax.taxDue = 0;
-        }
-    }
 
     public String locationToString(){
         String s = "";
