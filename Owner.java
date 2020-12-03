@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
+/**
+ * Class to represent an owner of a property
+ */
 public class Owner {
     private ArrayList<Property> properties;
     private String name;
 
     public Owner(String name) {
         properties = new ArrayList<Property>();
-        name = name;
+        this.name = name;
     }
 
     public ArrayList<Property> getProperties() {
