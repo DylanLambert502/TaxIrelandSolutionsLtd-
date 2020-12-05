@@ -11,12 +11,17 @@ public class FileMethods {
 
     public void writeAnOwnersPropertiesToFile(Owner owner) throws IOException {
         File nFile = new File(owner.getName() + ".csv");
-
+        File DoEFile = new File("AllProperties.csv");
+        //DoEfile created to store all properties in one file for Dept. of Enviorment.
         FileWriter fr = new FileWriter(nFile, true);
-        fr.append(owner.getName() + "'s Properties\n-------------\n");
+        FileWriter DoEfr = new FileWriter(DoEFile, true);
+        
         for ( Property p: owner.getProperties() ){
-            fr.append(p.toString() + "\n");
+            fr.append(owner.getName() + "," + p.toString() + "\n");
+            DoEfr.append(owner.getName() + "," + p.toString() + "\n");
         }
+        DoEfr.flush();
+        DoEfr.close();
         fr.flush();
         fr.close();
     }
