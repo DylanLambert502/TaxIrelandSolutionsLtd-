@@ -11,7 +11,7 @@ public class Property {
     protected Tax tax;
 
     public Property(String ownerName, String address, String postCode,
-                    double marketValue, int location, boolean ppr) {
+    double marketValue, int location, boolean ppr) {
         this.ownerName = ownerName;
         this.address = address;
         this.postCode = postCode;
@@ -41,30 +41,28 @@ public class Property {
         return ppr;
     }
 
-
     public String locationToString(){
         String s = "";
         switch (location){
             case 0: s+= "City";
-                break;
+            break;
             case 1: s+= "Large Town";
-                break;
+            break;
             case 2: s+= "Small Town";
-                break;
+            break;
             case 3: s+= "Village";
-                break;
+            break;
             case 4: s+= "Countryside";
-                break;
+            break;
 
         }
         return s;
     }
 
     public String toString(){
-        String s = "Address: " + address + ", Post Code: " + postCode + ", Market Value: " + marketValue + "," +
-                " Location: " + this.locationToString() + ", Principal Private Residence? " + ppr + tax.toString();
+        String s = "Address: " + address + ", Post Code: " + postCode + ", Market Value: €" + marketValue + "," +
+            " Location: " + this.locationToString() + ", Principal Private Residence? " + ppr +",\n" + tax.toString();
         return s;
     }
-
 
 }

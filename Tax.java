@@ -34,15 +34,15 @@ public class Tax{
 
         switch (Location) {
             case 0: annualTax += 100;
-                break;
+            break;
             case 1: annualTax += 80;
-                break;
+            break;
             case 2: annualTax += 60;
-                break;
+            break;
             case 3: annualTax += 50;
-                break;
+            break;
             case 4: annualTax += 25;
-                break;
+            break;
         }
 
         if ( ppr == false ) {
@@ -51,11 +51,9 @@ public class Tax{
         return annualTax;
     }
 
-
     public double getTaxDue() {
         return taxDue;
     }
-
 
     public double getTaxOverDue(){
         return taxOverDue;
@@ -73,20 +71,20 @@ public class Tax{
             Scanner keyboard = new Scanner( System.in);
             int choice = keyboard.nextInt();
             switch(choice){
-                case 0: System.out.println("You have paid $" + taxOverDue + " worth of overdue tax on this property");
-                    statements.get(statements.size() - 1).addPayment( new Payment(taxOverDue));
-                    taxOverDue = 0;
-                    yearsOverDue = 0;
-                    break;
-                case 1: System.out.println("You have paid $" + taxOverDue + " worth of overdue tax on this property");
-                    System.out.println("You have also paid $" + taxDue + " worth of tax due on this property");
-                    statements.get(statements.size() -1).addPayment( new Payment(taxOverDue + taxDue));
-                    taxOverDue = 0;
-                    yearsOverDue = 0;
-                    taxDue = 0;
+                case 0: System.out.println("You have paid €" + taxOverDue + " worth of overdue tax on this property");
+                statements.get(statements.size() - 1).addPayment( new Payment(taxOverDue));
+                taxOverDue = 0;
+                yearsOverDue = 0;
+                break;
+                case 1: System.out.println("You have paid €" + taxOverDue + " worth of overdue tax on this property");
+                System.out.println("You have also paid €" + taxDue + " worth of tax due on this property");
+                statements.get(statements.size() -1).addPayment( new Payment(taxOverDue + taxDue));
+                taxOverDue = 0;
+                yearsOverDue = 0;
+                taxDue = 0;
             }
         } else {
-            System.out.println("You have paid $" + taxDue + " worth of tax on this property");
+            System.out.println("You have paid €" + taxDue + " worth of tax on this property");
             statements.get(statements.size() -1).addPayment( new Payment(taxDue));
             taxDue = 0;
         }
@@ -105,16 +103,16 @@ public class Tax{
                 taxOverDue = taxDue;
                 taxDue = annualTax * 1.07;
             } else if( taxDue !=0 && taxOverDue !=0 ){
-                    yearsOverDue++;
-                    taxOverDue = taxOverDue + taxDue;
-                    taxDue = annualTax * Math.pow(1.07, yearsOverDue);
+                yearsOverDue++;
+                taxOverDue = taxOverDue + taxDue;
+                taxDue = annualTax * Math.pow(1.07, yearsOverDue);
             }
             statements.add( new BalancingStatement( year, taxDue ));
         }
     }
 
     public String toString(){
-        String s = ", Annual Tax: " + annualTax + ", Tax Due: " + taxDue + ", Tax OverDue: " + taxOverDue;
-        return s;
+        return String.format( "Annual Tax:  €%.2f, Tax Due: €%.2f, Tax OverDue: €%.2f", 
+            annualTax, taxDue, taxOverDue  );
     }
 }
