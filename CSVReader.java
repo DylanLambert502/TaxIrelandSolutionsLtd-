@@ -1,91 +1,51 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class CSVReader {
 
     public static final String delimiter = ",";
 
-    public static void read(String csvFile) {
+
+    public static void read(String csvFile){
         try {
             File file = new File(csvFile);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("Option: ");
+            String optionChoice = keyboard.nextLine();
             String line = "";
 
-            String[] tempArr;
-            while ((line = br.readLine()) != null) {
-                tempArr = line.split(delimiter);
-                for (String tempStr : tempArr) {
-                    System.out.print(tempStr + " ");
+            if (optionChoice.equals("1")) {
+                System.out.println("Post Code: ");
+                String pC = keyboard.nextLine();
+                String[] tempArr;
+                while ((line = br.readLine()) != null) {
+                    tempArr = line.split(delimiter);
+                    if (tempArr[2].equals(" Post Code: " + pC)) {
+                        System.out.print(tempArr[1] + tempArr[6] + tempArr[7] + tempArr[8] + "\n");
+                    }
                 }
-                System.out.println();
+            } else if (optionChoice.equals("2")) {
+                System.out.println("Owner Name: ");
+                String name = keyboard.nextLine();
+                String[] tempArr;
+                while ((line = br.readLine()) != null) {
+                    tempArr = line.split(delimiter);
+                    if (tempArr[0].equals(name)) {
+                        System.out.print(tempArr[1] + tempArr[6] + tempArr[7] + tempArr[8] +"\n");
+                    }
+                }
+
             }
-            br.close();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-    public static void readTax(String csvFile) {
-        try {
-            File file = new File(csvFile);
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println("Post Code: ");
-            String pC = keyboard.nextLine();
-            String line = "";
-
-            String[] tempArr;
-            while ((line = br.readLine()) != null)
-            {
-                tempArr = line.split(delimiter);
-                if (tempArr[2].equals(" Post Code: " + pC)) {
-                        System.out.print(tempArr[1]+tempArr[6]+tempArr[7]+tempArr[8]); }
-                    System.out.println();
-            }
-            br.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void readOwnerName(String csvFile) {
-        try {
-            File file = new File(csvFile);
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println("Owner Name: ");
-            String name = keyboard.nextLine();
-            String line = "";
-
-            String[] tempArr;
-            while ((line = br.readLine()) != null)
-            {
-                tempArr = line.split(delimiter);
-                if (tempArr[0].equals(name)) {
-                    System.out.print(tempArr[1]+tempArr[6]+tempArr[7]+tempArr[8]); }
-                System.out.println();
-            }
-            br.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
         // csv file to read
         String csvFile = "/home/default/Documents/cs4013/TaxSolutionsIreland/AllProperties.csv";
-        //CSVReader.read(csvFile);
-        //CSVReader.readTax(csvFile);
-        CSVReader.readOwnerName(csvFile);
-    }
-
-}
+        CSVReader.read(csvFile);
+    }}
