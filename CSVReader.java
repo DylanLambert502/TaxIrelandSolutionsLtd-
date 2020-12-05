@@ -12,6 +12,7 @@ public class CSVReader {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             Scanner keyboard = new Scanner(System.in);
+            System.out.println("1.) Property by Post Code 2.)Properties by Owner 3.)Over due Properties 4.)Property stats by code.");
             System.out.println("Option: ");
             String optionChoice = keyboard.nextLine();
             String line = "";
