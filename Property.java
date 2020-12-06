@@ -64,5 +64,9 @@ public class Property {
             " Location: " + this.locationToString() + ", Principal Private Residence? " + ppr +",\n" + tax.toString();
         return s;
     }
+    public String toStringCSV(){
+        String s =  address + "," + postCode + "," + marketValue + "," + this.locationToString() + "," + ppr +"," + tax.toStringCSV();
+        return s;
+    }
 
 }
