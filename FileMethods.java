@@ -17,8 +17,8 @@ public class FileMethods {
         FileWriter DoEfr = new FileWriter(DoEFile, true);
         
         for ( Property p: owner.getProperties() ){
-            fr.append(owner.getName() + "," + p.toString() + "\n");
-            DoEfr.append(owner.getName() + "," + p.toString() + "\n");
+            fr.append(owner.getName() + "," + p.toStringCSV() + "\n");
+            DoEfr.append(owner.getName() + "," + p.toStringCSV() + "\n");
         }
         DoEfr.flush();
         DoEfr.close();
