@@ -23,8 +23,8 @@ public class CSVReader {
                 String[] tempArr;
                 while ((line = br.readLine()) != null) {
                     tempArr = line.split(delimiter);
-                    if (tempArr[2].equals(" Post Code: " + pC)) {
-                        System.out.print(tempArr[1] + tempArr[6] + tempArr[7] + tempArr[8] + "\n");
+                    if (tempArr[2].equals(pC)) {
+                        System.out.print(tempArr[1] +" "+ tempArr[6] +" "+ tempArr[7] +" "+ tempArr[8] + "\n");
                     }
                 }
             } else if (optionChoice.equals("2")) {
@@ -34,7 +34,7 @@ public class CSVReader {
                 while ((line = br.readLine()) != null) {
                     tempArr = line.split(delimiter);
                     if (tempArr[0].equals(name)) {
-                        System.out.print(tempArr[1] + tempArr[6] + tempArr[7] + tempArr[8] +"\n");
+                        System.out.print(tempArr[1] +" "+ tempArr[6] +" "+ tempArr[7] +" "+ tempArr[8] +"\n");
                     }
                 }
 
