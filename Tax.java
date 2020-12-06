@@ -115,4 +115,9 @@ public class Tax{
         return String.format( "Annual Tax:  €%.2f, Tax Due: €%.2f, Tax OverDue: €%.2f", 
             annualTax, taxDue, taxOverDue  );
     }
+    public String toStringCSV(){
+        String csvTax = annualTax + "," +taxDue +"," + taxOverDue;
+                return csvTax;
+
+    }
 }
