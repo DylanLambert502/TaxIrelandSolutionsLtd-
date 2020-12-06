@@ -44,7 +44,7 @@ public class CSVReader {
         }
     }
 
-
+         //Test for file read
     public static void main(String[] args) {
         // csv file to read
         String csvFile = "/home/default/Documents/cs4013/TaxSolutionsIreland/AllProperties.csv";
