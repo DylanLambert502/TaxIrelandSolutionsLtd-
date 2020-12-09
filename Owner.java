@@ -23,4 +23,8 @@ public class Owner {
     public void addProperty(Property p){
         properties.add(p);
     }
+
+    public void setName(String ownerName) {
+        this.name = ownerName;
+    }
 }
