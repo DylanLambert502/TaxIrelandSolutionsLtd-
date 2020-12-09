@@ -16,3 +16,4 @@ I wrote the WriteToFileMethods class.
 I wrote some comments on top of classes.
 I suggested that we design the project to be similar to the vending machine project.
 I was regularly testing the code as I wrote it. 
+I also created the submitted CSV files.
