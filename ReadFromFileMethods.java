@@ -27,84 +27,90 @@ public class ReadFromFileMethods {
     public String getPaymentsForProperty(String choice ) throws IOException {
         br2.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while ((line = br2.readLine() ) != null){
             String[] tempArr = line.split(",");
             if (tempArr[1].contains(choice) && tempArr.length == 4){
-                s += tempArr[2] + ", " + tempArr[3] + "\n" ;
+                s.append(tempArr[2]).append(", ").append(tempArr[3]).append("\n");
             }
         }
         br2.reset();
-        return s;
+        return s.toString();
     }
 
+    public String getPaymentForAYear(String year){
+
+
+
+        return year;
+    }
     public String getOwnerNames() throws IOException {
         br1.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while( (line = br1.readLine() ) != null){
             String[] tempArr = line.split(",");
-            if( !s.contains( tempArr[0] ) ){
-                s += tempArr[0] + "\n";
+            if( !s.toString().contains( tempArr[0] ) ){
+                s.append(tempArr[0]).append("\n");
             }
         }
         br1.reset();
-        return s;
+        return s.toString();
     }
 
     public String getPaymentsForAnOwner( String owner) throws IOException {
         br2.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while( (line = br2.readLine() ) != null){
             String[] tempArr = line.split(",");
             if( line.contains(owner) && tempArr.length == 4 ){
-                s += tempArr[2] + ", " + tempArr[3] + "\n";
+                s.append(tempArr[2]).append(", ").append(tempArr[3]).append("\n");
             }
         }
         br2.reset();
-        return s;
+        return s.toString();
     }
 
     public String getAllAreaCodes() throws IOException{
         br1.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while( (line = br1.readLine() ) != null){
             String[] tempArr = line.split(",");
             String[] getAreaCodes = tempArr[1].split(":| ");
-            if( !s.contains( getAreaCodes[1] ) ){
-                s += getAreaCodes[1] + "\n";
+            if( !s.toString().contains( getAreaCodes[1] ) ){
+                s.append(getAreaCodes[1]).append("\n");
             }
         }
         br1.reset();
-        return s;
+        return s.toString();
     }
 
     public String getAllOverDueTax() throws IOException {
         br1.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while ((line = br1.readLine()) != null) {
             String[] tempArr = line.split(",");
             if ( !line.contains("Tax OverDue:0.0") )
-                s += line + "\n";
+                s.append(line).append("\n");
         }
         br1.reset();
-        return s;
+        return s.toString();
     }
 
     public String getOverDueTaxWithinAnArea( String areaCode ) throws IOException {
         br1.mark(100000);
         String line = "";
-        String s = "";
+        StringBuilder s = new StringBuilder();
         while ((line = br1.readLine()) != null) {
             String[] tempArr = line.split(",");
             if ( !line.contains("Tax OverDue:0.0") & line.contains(areaCode))
-                s += line;
+                s.append(line);
         }
         br1.reset();
-        return s;
+        return s.toString();
     }
 
     public void readPropertiesFromFileToOwnersArrayList( Owner owner ) throws IOException {
