@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -11,41 +12,39 @@ public class DeptOfEnvironmentMenu {
         keyboard = new Scanner( System.in );
     }
 
-    public void run(){
+    public void run() throws IOException {
         boolean more = true;
-        DeptOfEnvironmentManager manager = new DeptOfEnvironmentManager();
-        /**
-         * In the final version I think that
-         */
+        ReadFromFileMethods readFromFileMethods = new ReadFromFileMethods();
 
-        
-        
         while(more){
-            System.out.println("1) Get Tax Payment Data for a property, ");
-            int command = keyboard.nextInt();
-            if (command == 1){
-                if(manager.getPropertyOwners().size()==0)
-                    System.out.println("No Property Owners.");
-                else {
-                    System.out.println("Choose the owner of property in question: \n");
-                    for(Owner o: manager.getPropertyOwners()){
-                        System.out.println(o.getName());
-                    }
-                    String choice = keyboard.nextLine();
-                    for (Owner o: manager.getPropertyOwners()){
-                        if(choice.equalsIgnoreCase( o.getName() ) ){
-                            System.out.println("Choose the property in question: \n");
-                            for(Property p: o.getProperties()) {
-                                System.out.println(p.getPostCode());
-                            }
-                            String choice2 = keyboard.nextLine();
-                            for (Property p: o.getProperties()){
-                                if(choice2.equalsIgnoreCase( p.getPostCode() ) ){
-                                    System.out.print(p.tax.toString());
-                                }
-                            }
-                        }
-                    }
+            System.out.println("1) Payment Data for a Property, 2) Payments made by an Owner, 3) All Properties with OverDue Tax\n");
+            String command = keyboard.nextLine().toUpperCase();
+
+            if (command.equalsIgnoreCase("1")) {
+                System.out.print( readFromFileMethods.getPostCodes() );
+                System.out.println("Select property by its Post Code as listed above (CASE SENSITIVE): ");
+                String choice = keyboard.nextLine();
+                System.out.println( readFromFileMethods.getPaymentsForProperty(choice) );
+            }
+
+            else if( command.equalsIgnoreCase("2")){
+                System.out.print( readFromFileMethods.getOwnerNames() );
+                System.out.println("Choose the owner whos payments you would like to view (eg. 'David McCarthy'): ");
+                System.out.println("BEWARE, THIS IS CASE SENSITIVE");
+                String choice = keyboard.nextLine();
+                System.out.println(readFromFileMethods.getPaymentsForAnOwner(choice));
+            }
+
+            else if(command.equalsIgnoreCase("3")){
+                System.out.println("Would you like to select a specific area? Type 0 for no and 1 for yes");
+                String choice = keyboard.nextLine();
+                if( choice.equalsIgnoreCase("0")){
+                    System.out.print( readFromFileMethods.getAllOverDueTax());
+                } else if ( choice.equalsIgnoreCase("1")){
+                    System.out.println( readFromFileMethods.getAllAreaCodes() );
+                    System.out.println("Choose an area code (CASE SENSITIVE): ");
+                    choice = keyboard.nextLine();
+                    System.out.print( readFromFileMethods.getOverDueTaxWithinAnArea(choice) );
                 }
             }
         }
