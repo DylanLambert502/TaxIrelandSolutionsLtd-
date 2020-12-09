@@ -16,12 +16,11 @@ import javafx.stage.Stage;
 public class GUI extends Application{
 
 Scene scene1, scene2, scene3, scene4;
-private static TextField tf = new TextField();
-private static Owner owner = new Owner("");
     
 @Override
 public void start(Stage primaryStage)  {
-        
+TextField tf = new TextField();
+Owner owner = new Owner("");
 primaryStage.setTitle("Property Charge Management System");
 
 //Scene 1
