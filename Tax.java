@@ -66,7 +66,7 @@ public class Tax{
                 break;
         }
 
-        if ( ppr == false ) {
+        if ( !ppr ) {
             annualTax += 100;
         }
         return annualTax;
