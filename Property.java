@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 
 public class Property {
@@ -11,7 +12,7 @@ public class Property {
     protected Tax tax;
 
     public Property(String ownerName, String address, String postCode,
-    double marketValue, int location, boolean ppr) {
+                    double marketValue, int location, boolean ppr) throws IOException {
         this.ownerName = ownerName;
         this.address = address;
         this.postCode = postCode;
@@ -21,7 +22,21 @@ public class Property {
         this.tax = new Tax( marketValue, location, ppr);
     }
 
-    public String getOwner() {
+    public Property(String ownerName, String postCode, double taxDue, double taxOverDue) throws IOException {
+        this.address = "";
+        this.marketValue = 0;
+        this.location = 0;
+        this.ppr = true;
+
+        this.ownerName = ownerName;
+        this.postCode = postCode;
+        this.tax = new Tax();
+        this.tax.setTaxDue(taxDue);
+        this.tax.setTaxOverDue(taxOverDue);
+        this.tax.setAnnualTax(taxDue);
+    }
+
+    public String getOwnerName() {
         return ownerName;
     }
 
@@ -41,31 +56,36 @@ public class Property {
         return ppr;
     }
 
+    public void payTax() throws IOException {
+        WriteToFileMethods fileMethods = new WriteToFileMethods();
+        fileMethods.writeToPaymentFile("Owner: " + this.getOwnerName() + ",PostCode: " + this.getPostCode() + ",");
+        this.tax.payTax( this.postCode);
+    }
+
     public String locationToString(){
         String s = "";
         switch (location){
             case 0: s+= "City";
-            break;
+                break;
             case 1: s+= "Large Town";
-            break;
+                break;
             case 2: s+= "Small Town";
-            break;
+                break;
             case 3: s+= "Village";
-            break;
+                break;
             case 4: s+= "Countryside";
-            break;
+                break;
 
         }
         return s;
     }
 
     public String toString(){
-        String s = "Address: " + address + ", Post Code: " + postCode + ", Market Value: €" + marketValue + "," +
-            " Location: " + this.locationToString() + ", Principal Private Residence? " + ppr +",\n" + tax.toString();
+        String s = "Post Code: " + postCode + ", " + tax.toString();
         return s;
     }
     public String toStringCSV(){
-        String s =  address + "," + postCode + "," + marketValue + "," + this.locationToString() + "," + ppr +"," + tax.toStringCSV();
+        String s =  "Owner:" + this.getOwnerName()  + ",PostCode:" + postCode + "," + tax.toStringCSV();
         return s;
     }
 
