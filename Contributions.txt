@@ -1,1 +1,18 @@
+David McCarthy's Contributions
+------------------------------
+In alphabetical order:
+I wrote the balancingStatement Class.
+I wrote the deptOfEnvironmentMenu class which used Dylan Lambert's CSVReader class as a base to work off of.
+I made a very teeny tiny adjustment to the GUI class which then allowed me to call the GUI from the main method.
+I wrote the mangementSystemSim class.
+I wrote the owner class with Dylan Lambert.
+I wrote the Payment class.
+I wrote the Property class with Dylan Lambert.
+I wrote the PropertyOwnerMenu class, Dylan Lambert helped me to write the "Register Properties" and the "Show Properties" commands.
+I wrote the ReadFromFileMethods class.
+I wrote the Tax class with help from Dylan Lambert to write the data fields, the getters and setters and the calcAnnualTax class.
+I wrote the WriteToFileMethods class.
 
+I wrote some comments on top of classes.
+I suggested that we design the project to be similar to the vending machine project.
+I was regularly testing the code as I wrote it. 
