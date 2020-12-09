@@ -12,6 +12,9 @@ public class PropertyOwnerMenu {
 
     private Scanner keyboard;
 
+    /**
+     * Menu which a property owner interacts with
+     */
     public PropertyOwnerMenu(){
         keyboard = new Scanner(System.in);
     }
@@ -30,7 +33,7 @@ public class PropertyOwnerMenu {
                 p.tax.taxDay();
             }
 
-            System.out.println("1) Register a Properties, 2) Show Properties, 3) Pay Tax, 4) View Balancing Statements, 5) Look at Payment History, 6) Quick add (for developer use), Q)uit");
+            System.out.println("1) Register a Properties, 2) Show Properties, 3) Pay Tax, 4) View Balancing Statements,\n5) Look at Payment History, Q)uit");
             String command = keyboard.nextLine().toUpperCase();
 
             if(command.equals("1")){ //Adding a Property
@@ -55,6 +58,7 @@ public class PropertyOwnerMenu {
                 for(Property p: owner.getProperties()){
                     System.out.println(p.toString());
                 }
+
             }
 
             else if(command.equals("3")){
@@ -101,15 +105,8 @@ public class PropertyOwnerMenu {
                         }
                     }
                 }
-            }
 
-            else if(command.equals("6")){
-                owner.addProperty( new Property(owner.getName(), "Lisardboula", "V92 Y20", 270000, 4, true));
-                writeToFileMethods.writePropertyToFile(new Property(owner.getName(), "Lisardboula", "V92 Y20", 270000, 4, true));
-                owner.addProperty( new Property(owner.getName(), "Limmers", "V95 QK20", 400000, 0, false));
-                writeToFileMethods.writePropertyToFile(new Property(owner.getName(), "Limmers", "V95 QK20", 400000, 0, false));
-                owner.addProperty( new Property(owner.getName(), "Cork", "V91 FK82", 1000000, 3, false));
-                writeToFileMethods.writePropertyToFile(new Property(owner.getName(), "Cork", "V91 FK82", 1000000, 3, false));
+                System.out.println( readFromFileMethods.getPaymentsForAnOwner(owner.getName()) );
             }
 
             else if(command.equalsIgnoreCase("Q")) {
@@ -119,4 +116,6 @@ public class PropertyOwnerMenu {
             }
         }
     }
+
+
 }
