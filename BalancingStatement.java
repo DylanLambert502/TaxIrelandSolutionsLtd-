@@ -14,6 +14,7 @@ public class BalancingStatement {
     }
 
     public int getYear() {
+
         return year;
     }
 
