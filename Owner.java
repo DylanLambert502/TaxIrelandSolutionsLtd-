@@ -8,7 +8,7 @@ public class Owner {
     private String name;
 
     public Owner(String name) {
-        properties = new ArrayList<Property>();
+        properties = new ArrayList<>();
         this.name = name;
     }
 
