@@ -56,6 +56,10 @@ public class DeptOfEnvironmentMenu {
                 System.out.print( readFromFileMethods.getTaxStatisticsWithinAnArea(choice) );
 
             }
+            
+            else if(command.equalsIgnoreCase("Q")){
+                more = false;
+            }
         }
     }
 }
