@@ -13,6 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * GUI method
+ */
 public class GUI extends Application{
 
 Scene scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8;
@@ -24,7 +27,9 @@ Owner owner = new Owner("");
         
 primaryStage.setTitle("Property Charge Management System");
 
-//Scene 1
+/**
+ * Scene 1
+ */
 
 Label label1= new Label("Choose which mode you would like to use today");
 Button button1= new Button("Property Owner");
@@ -34,8 +39,11 @@ button2.setOnAction(e -> primaryStage.setScene(scene3));
 VBox layout1 = new VBox(10);     
 layout1.getChildren().addAll(label1, button1, button2);
 scene1= new Scene(layout1, 550, 200);
-               
-//Scene 2
+
+/**
+ * Scene 2
+ */
+
 GridPane layout2 = new GridPane();
 Label label2= new Label("Please enter your name:");
 layout2.add(label2,0,0);
@@ -66,7 +74,9 @@ VBox layout2c= new VBox(10);
 layout2c.getChildren().addAll(layout2, layout2a);
 scene2= new Scene(layout2c,550,200);
 
-//scene 3
+/**
+ * Scene 3
+ */
 
 GridPane layout3 = new GridPane();
 Label label3= new Label("Welcome "+owner.getName()+". Choose what you would like to do.");
@@ -106,7 +116,9 @@ VBox layout4= new VBox(10);
 layout4.getChildren().addAll(label3, layout3,msg);
 scene3= new Scene(layout4,550,250);
 
-//scene 4
+/**
+ * Scene 4
+ */
 
 VBox layout5 = new VBox(10);
 GridPane layout6 = new GridPane();
@@ -378,6 +390,12 @@ private boolean validate(String text){
   return text != null && !text.isEmpty();
 }
 
+    /**
+     * Checks if double method
+     * @param s
+     * @return
+     */
+
 public static boolean isDouble(String s) {
     try { 
         Double.parseDouble(s); 
@@ -388,6 +406,12 @@ public static boolean isDouble(String s) {
     return true;
 }
 
+    /**
+     * is integer checking method
+     * @param s
+     * @return
+     */
+
 public static boolean isInt(String s) {
     try { 
         Integer.parseInt(s); 
@@ -397,6 +421,11 @@ public static boolean isInt(String s) {
     
     return true;
 }
+
+    /**
+     * main method
+     * @param args
+     */
 
 public static void main(String[] args) {
 launch(args);
