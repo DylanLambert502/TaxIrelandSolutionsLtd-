@@ -31,3 +31,12 @@ Helped David Mccarthy write the Owner and Property class
 Assisted David with writing elements of the ProteryOwnerMenu such as "Register Properties" and the "Show Properties" commands and the data fields fo calcAnnualTax.
 Clan some minor bugs and syntax errors from code.
 
+Fergus Stafford's Contributions
+------------------------------
+In alphabetical order:
+I designed a layout for the GUI.
+I created multiple scenes for the GUI.
+I created methods which the scenes can be changed.
+I wrote the GUI class.
+
+
