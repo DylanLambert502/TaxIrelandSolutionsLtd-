@@ -160,7 +160,7 @@ public class Tax{
      * used for calculating tax
      */
     public void taxDay(){
-        if( LocalDate.now().getYear() > this.year){
+        if( LocalDate.now().getYear() > 2020){
             year++;
             if( taxDue == 0 ){
                 taxOverDue = 0;
