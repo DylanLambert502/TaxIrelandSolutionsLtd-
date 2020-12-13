@@ -9,7 +9,9 @@ import java.util.Scanner;
  */
 
 public class PropertyOwnerMenu {
-
+    /**
+     * variables declared
+     */
     private Scanner keyboard;
 
     /**

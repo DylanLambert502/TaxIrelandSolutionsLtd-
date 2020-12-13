@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tax{
-
+    /**
+     * Variables
+     */
     protected double taxDue;
     public double annualTax;
     protected double taxOverDue;
@@ -15,11 +17,22 @@ public class Tax{
     private WriteToFileMethods writeToFileMethods = new WriteToFileMethods();
     private ReadFromFileMethods readFromFileMethods = new ReadFromFileMethods();
 
+    /**
+     * constructor
+     * @throws IOException
+     */
     public Tax() throws IOException {
         statements = new ArrayList<BalancingStatement>();
         statements.add( new BalancingStatement( year, taxDue ) );
     }
 
+    /**
+     * constructor
+     * @param MarketValue
+     * @param Location
+     * @param ppr
+     * @throws IOException
+     */
     public Tax(double MarketValue, int Location, boolean ppr) throws IOException {
         this.taxDue = calcAnnualTax(MarketValue, Location, ppr);
         this.annualTax = calcAnnualTax(MarketValue, Location, ppr);
@@ -28,18 +41,37 @@ public class Tax{
         this.year =Year.now().getValue();
     }
 
+    /**
+     * sets tax due
+     * @param taxDue
+     */
     public void setTaxDue(double taxDue) {
         this.taxDue = taxDue;
     }
 
+    /**
+     * allows for the tax overdue to be set
+     * @param taxOverDue
+     */
     public void setTaxOverDue(double taxOverDue) {
         this.taxOverDue = taxOverDue;
     }
 
+    /**
+     * allows for the annual tax rate to be set
+     * @param annualTax
+     */
     public void setAnnualTax(double annualTax) {
         this.annualTax = annualTax;
     }
 
+    /**
+     * A calculator for the annual tax rate
+     * @param MarketValue
+     * @param Location
+     * @param ppr
+     * @return
+     */
     public double calcAnnualTax(double MarketValue, int Location, boolean ppr) {
         double annualTax = 100;
 
@@ -80,10 +112,19 @@ public class Tax{
         return taxOverDue;
     }
 
+    /**
+     * gets the statements from arraylist
+     * @return
+     */
     public ArrayList<BalancingStatement> getStatements() {
         return statements;
     }
 
+    /**
+     * pay ta=x method
+     * @param postCode
+     * @throws IOException
+     */
     public void payTax( String postCode) throws IOException {
         if(taxDue == 0){
             System.out.println("You're tax is all paid up on this property");
@@ -115,6 +156,9 @@ public class Tax{
         }
     }
 
+    /**
+     * used for calculating tax
+     */
     public void taxDay(){
         if( LocalDate.now().getYear() > this.year){
             year++;
@@ -134,10 +178,19 @@ public class Tax{
         }
     }
 
+    /**
+     * overriding toString method
+     * @return
+     */
     public String toString(){
         return String.format( "Tax Due: €%.2f, Tax OverDue: €%.2f",
                 taxDue, taxOverDue  );
     }
+
+    /**
+     * return the CSV as a toString method
+     * @return
+     */
     public String toStringCSV(){
         String csvTax = "Tax Due:" +taxDue +",Tax OverDue:" + taxOverDue;
         return csvTax;

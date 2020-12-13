@@ -5,13 +5,22 @@ import java.util.Scanner;
  * Menu which the Dept of Environment Employees will be using
  */
 public class DeptOfEnvironmentMenu {
-
+    /**
+     * Scanner variable declare
+     */
     private Scanner keyboard;
 
+    /**
+     * Constructor
+     */
     public DeptOfEnvironmentMenu(){
         keyboard = new Scanner( System.in );
     }
 
+    /**
+     * run method that starts the program
+     * @throws IOException
+     */
     public void run() throws IOException {
         boolean more = true;
         ReadFromFileMethods readFromFileMethods = new ReadFromFileMethods();

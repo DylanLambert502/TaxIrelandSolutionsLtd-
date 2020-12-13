@@ -2,10 +2,16 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CSVReader {
-
+    /**
+     * variables declared
+     */
     public static final String delimiter = ",";
 
-
+    /**
+     * starts reading from the scanner to determine the out put
+     * @param csvFile
+     * @throws IOException
+     */
     public static void read(String csvFile) throws IOException {
         try {
             File file = new File(csvFile);

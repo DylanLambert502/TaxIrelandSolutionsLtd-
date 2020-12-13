@@ -11,16 +11,24 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GUI extends Application{
+    /**
+     * Scene variables declared
+     */
+    Scene scene1, scene2, scene3, scene4;
 
-Scene scene1, scene2, scene3, scene4;
-    
-@Override
+    /**
+     * start method
+     * @param primaryStage
+     */
+    @Override
 public void start(Stage primaryStage)  {
 TextField tf = new TextField();
 Owner owner = new Owner("");
 primaryStage.setTitle("Property Charge Management System");
 
-//Scene 1
+/**
+ * Scene 1
+ */
 
 Label label1= new Label("Choose which mode you would like to use today");
 Button button1= new Button("Property Owner");
@@ -30,9 +38,11 @@ button2.setOnAction(e -> primaryStage.setScene(scene3));
 VBox layout1 = new VBox(10);     
 layout1.getChildren().addAll(label1, button1, button2);
 scene1= new Scene(layout1, 500, 200);
-               
-//Scene 2
-GridPane layout2 = new GridPane();
+
+/**
+ * Scene 2
+ */
+        GridPane layout2 = new GridPane();
 Label label2= new Label("Please enter your name:");
 layout2.add(label2,0,0);
 layout2.add(tf,1,0);
@@ -63,7 +73,9 @@ VBox layout2c= new VBox(10);
 layout2c.getChildren().addAll(layout2, layout2a);
 scene2= new Scene(layout2c,500,200);
 
-
+/**
+ * Scene 3
+ */
 
 GridPane layout3 = new GridPane();
 Label label3= new Label("Choose what you would like to do.");
@@ -143,11 +155,21 @@ primaryStage.setScene(scene1);
 primaryStage.show();
 }
 
+    /**
+     * boolean
+     * @param text
+     * @return
+     */
+
 private boolean validate(String text){
   return text != null && !text.isEmpty();
 }
 
-public static void main(String[] args) {
+    /**
+     * main method for GUI class
+     * @param args
+     */
+    public static void main(String[] args) {
 launch(args);
 }
 
