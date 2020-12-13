@@ -40,3 +40,12 @@ I created methods which the scenes can be changed.
 I wrote the GUI class.
 
 
+Gerard O Connell
+-----------------------------------
+Created and built UML diagram
+Generated and created JavaDocs
+Created and built CRC cards
+Refactored a small bit of code to be stringBuilder
+Created and built HelpFile
+
+
