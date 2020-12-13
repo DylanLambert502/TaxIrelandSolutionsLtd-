@@ -20,3 +20,14 @@ I wrote the WriteToFileMethods class.
 I wrote some comments on top of classes.
 I suggested that we design the project to be similar to the vending machine project. 
 I also created the submitted CSV files.
+
+
+
+
+Dylan Lambert-Elliott Contributions
+-----------------------------------
+I wrote the base csvReader then used for dept. Of Enviorment class
+Helped David Mccarthy write the Owner and Property class
+Assisted David with writing elements of the ProteryOwnerMenu such as "Register Properties" and the "Show Properties" commands and the data fields fo calcAnnualTax.
+Clan some minor bugs and syntax errors from code.
+
