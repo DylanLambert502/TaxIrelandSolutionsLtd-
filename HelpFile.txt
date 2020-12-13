@@ -1,0 +1,27 @@
+HelpFile
+
+GitHub repository https://github.com/DylanLambert502/TaxIrelandSolutionsLtd-
+
+Compiling in Windows
+Follow the following steps to build the program so it will run
+1. Open command line terminal.
+2. Type "java -version" and press enter.
+3. Type "javac -version" and press enter.
+4. If either command does not return a version number for java
+5. Got to oracle and download the Java SDK
+6. When installed store all the files from the project, you want to install into one folder.
+7. In the command line, go to the directory where the files are stored.
+8. Then compile the program by typing "javac *.java" in the terminal.
+9. The program should now be compiled and ready to run on the machine.
+
+Compiling in Linux
+Follow the following steps to build the program so it will run.
+1. Open a terminal window.
+2. Type "java -version" and press enter.
+3. Type "javac -version" and press enter.
+4. If either command does not return a version number for java
+5. Got to oracle and download the Java SDK
+6. When installed store all the files from the project, you want to install into one folder.
+7. In the command line, go to the directory where the files are stored.
+8. Then compile the program by typing "javac *.java" in the terminal.
+9. The program should now be compiled and ready to run on the machine.
